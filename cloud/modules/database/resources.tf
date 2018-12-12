@@ -1,7 +1,7 @@
 resource "google_sql_database_instance" "main_db" {
   name = "main-db"
   database_version = "MYSQL_5_6"
-  region = "europe-west3"
+  region = "${var.region}"
 
   settings {
     tier = "db-f1-micro"
@@ -12,7 +12,7 @@ resource "google_sql_database_instance" "main_db" {
 
       authorized_networks = [
         {
-          name = "network"
+          name = "${var.server_name}"
           value = "${var.server_public_ip}/32"
         },
       ]

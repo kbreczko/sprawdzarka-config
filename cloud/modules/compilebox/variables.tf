@@ -22,3 +22,14 @@ variable "ssh_pem_key_file" {
   description = "The file with private key"
 }
 
+variable "machine_type" {
+  description = "Machine type"
+}
+
+variable "zone" {
+  description = "The zone in which the instance should be started"
+}
+
+variable "port" {
+  description = "The port on which the server will be shared"
+}

@@ -1,12 +1,11 @@
-
 resource "google_compute_address" "public_ip" {
   name = "compilebox-ip"
 }
 
 resource "google_compute_instance" "server" {
   name         = "compilebox-server"
-  machine_type = "n1-standard-1"
-  zone         = "europe-west3-a"
+  machine_type = "${var.machine_type}"
+  zone         = "${var.zone}"
 
   boot_disk {
     initialize_params {
@@ -49,7 +48,7 @@ resource "google_compute_firewall" "http_rule" {
 
   allow {
     protocol = "tcp"
-    ports    = ["8080"]
+    ports    = ["${var.port}"]
   }
 
   source_ranges = ["${var.backend_ip}"]

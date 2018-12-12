@@ -10,6 +10,7 @@ module "database" {
   source = "./modules/database/"
   server_public_ip = "${module.backend.server_public_ip}"
   server_name = "${module.backend.server_name}"
+  region="europe-west3"
 }
 
 module "network" {
@@ -25,6 +26,8 @@ module "backend" {
   ssh_user = "kamil"
   ssh_pub_key_file = "/home/kamil/Konfiguracje/kamil.pub"
   ssh_pem_key_file = "/home/kamil/Konfiguracje/kamil.pem"
+  zone="europe-west3-a"
+  machine_type="n1-standard-1"
 }
 
 module "frontend" {
@@ -32,10 +35,12 @@ module "frontend" {
   subnetwork_link = "${module.network.subnetwork_link}"
   network_link = "${module.network.network_link}"
   server_name = "frontend"
-  port = "4201"
+  port = "80"
   ssh_user = "kamil"
   ssh_pub_key_file = "/home/kamil/Konfiguracje/kamil.pub"
   ssh_pem_key_file = "/home/kamil/Konfiguracje/kamil.pem"
+  zone="europe-west3-a"
+  machine_type="n1-standard-1"
 }
 
 module "compilebox" {
@@ -46,6 +51,9 @@ module "compilebox" {
   ssh_user = "kamil"
   ssh_pub_key_file = "/home/kamil/Konfiguracje/kamil.pub"
   ssh_pem_key_file = "/home/kamil/Konfiguracje/kamil.pem"
+  port = "8080"
+  zone="europe-west3-a"
+  machine_type="n1-standard-1"
 }
 
 # ------------------------------------ output ---------------------------------

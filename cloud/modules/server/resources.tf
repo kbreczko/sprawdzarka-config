@@ -3,9 +3,9 @@ resource "google_compute_address" "public_ip" {
 }
 
 resource "google_compute_instance" "server" {
-  name         = "${var.server_name}"
-  machine_type = "n1-standard-1"
-  zone         = "europe-west3-a"
+  name         = "${var.server_name}-server"
+  machine_type = "${var.machine_type}"
+  zone         = "${var.zone}"
 
   boot_disk {
     initialize_params {
@@ -38,7 +38,7 @@ resource "google_compute_instance" "server" {
     }
   }
 
-  tags = ["${var.server_name}-server"]
+  tags = ["${var.server_name}"]
 }
 
 resource "google_compute_firewall" "http_rule" {
@@ -50,5 +50,5 @@ resource "google_compute_firewall" "http_rule" {
     ports    = ["${var.port}"]
   }
 
-  target_tags = ["${var.server_name}-server"]
+  target_tags = ["${var.server_name}"]
 }

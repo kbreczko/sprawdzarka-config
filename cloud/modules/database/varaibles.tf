@@ -5,3 +5,7 @@ variable "server_public_ip" {
 variable "server_name" {
   description = "name of the host server"
 }
+
+variable "region" {
+  description = "The region in which the instance should be started"
+}

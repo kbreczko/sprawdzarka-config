@@ -1,5 +1,5 @@
 output "subnetwork_link" {
-  value = "${google_compute_subnetwork.http_servers.self_link}"
+  value = "${google_compute_subnetwork.dev_subnetwork.self_link}"
 }
 
 output "network_link" {
